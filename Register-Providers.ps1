@@ -5,7 +5,7 @@ foreach ($RP in $RPList)
     $temp = Get-AzResourceProvider -ProviderNamespace $RP -Location $location
     if ($temp.RegistrationState -eq "NotRegistered")
         {
-            Register-AzResourceProvider -ProviderNamespace $RP -WhatIf
+            Register-AzResourceProvider -ProviderNamespace $RP
         }
     else
         {
