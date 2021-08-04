@@ -3,6 +3,37 @@ Repo with some Azure scripts to prepare your Azure environment to VMware Horizon
 
 > Note: Run the following commands on [Azure Cloud Shell ](https://shell.azure.com/), PowerShell Mode.
 
+The following Azure Regions are not supported for [Horizon Cloud on Azure Deployment](https://kb.vmware.com/s/article/77121):
+- France South
+- UAE Central
+- Azure Government (US Gov Iowa)
+- Azure Germany (Germany Central, Germany Northeast)  
+
+## Check Azure Resource Provider Status and register required Providers
+
+The script PowerShell **Register-Providers.ps1** will check all Azure Resource Providers required by VMWare Horizon and register the ones that are missing.
+You should first change the **$location** variable to the Azure Region you want to deploy VMWare Horizon, and then execute the script on [Azure Cloud Shell ](https://shell.azure.com/)
+
+The following Azure Resource Provider are required by VMware Horizon:
+- Microsoft.Compute
+- microsoft.insights
+- Microsoft.Network
+- Microsoft.Storage
+- Microsoft.KeyVault
+- Microsoft.Authorization
+- Microsoft.Resources
+- Microsoft.ResourceHealth
+- Microsoft.ResourceGraph
+- Microsoft.Security
+- Microsoft.DBforPostgreSQL
+- Microsoft.Sql
+
+## Check you Azure Subscription Available Quota
+
+The script PowerShell **Available-Quota.ps1** will check all Azure Resource Quota required by VMWare Horizon and if you have enough quota available or not.
+This is a sample script output that show quota is available to proceed with Horizon Deployment:
+![Checking-quota](/checking-quota.PNG)
+
 ## Get Azure Subscription ID
 
 Get you Azure Subscription ID with the following command:
@@ -33,24 +64,6 @@ Take note of the output, you will need the following information to add you Azur
 On VMWare Horizon Universal Console add a new subscription and paste the information in the appropriate fields:
 ![HorizonConfig](/Horizon-Subscription-config.PNG)
 
-## Check Azure Resource Provider Status and register required Providers
-
-The script PowerShell **Register-Providers.ps1** will check all Azure Resource Providers required by VMWare Horizon and register the ones that are missing.
-You should first change the **$location** variable to the Azure Region you want to deploy VMWare Horizon, and then execute the script on [Azure Cloud Shell ](https://shell.azure.com/)
-
-The following Azure Resource Provider are required by VMware Horizon:
-- Microsoft.Compute
-- microsoft.insights
-- Microsoft.Network
-- Microsoft.Storage
-- Microsoft.KeyVault
-- Microsoft.Authorization
-- Microsoft.Resources
-- Microsoft.ResourceHealth
-- Microsoft.ResourceGraph
-- Microsoft.Security
-- Microsoft.DBforPostgreSQL
-- Microsoft.Sql
 
 
 
