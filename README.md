@@ -8,7 +8,7 @@ Create Azure Service Principal with **Contributor Role** at the Subscription Lev
 
 > az ad sp create-for-rbac -n "VmwareHorizon" --role Contributor --scopes /subscriptions/{Your_SubscriptionID}
 
-Take not of the output of this command, you will need the following information on Horizon Cloud configuration:
+Take note of the output of the command, you will need the following information to add you Azure Subscription to Horizon Cloud:
 
 >   **"appId": "YOUR-APPLICATION-ID",**
 
@@ -19,6 +19,9 @@ Take not of the output of this command, you will need the following information 
 >   **"password": "YOUR-APPLICATION-SECRET",**
 
 >   **"tenant": "YOUR-AZURE-AD-TENANT-ID"**
+
+
+On VMWare Horizon Universal Console add a new subscription and paste the information 
 
 ## Check Azure Resource Provider Status and Register required ones
 
