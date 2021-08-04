@@ -1,7 +1,11 @@
+> Disclaimer: All scripts provided here are AS-IS and should be used with caution. We DO NOT offer any warranties.
+
 # VMwareHorizonScripts
 Repo with some Azure scripts to prepare your Azure environment to VMware Horizon deployment. All steps, commands and scripts present here were created to address the requirement of [VMWare Horizon Cloud on Azure Checklist](https://docs.vmware.com/en/VMware-Horizon-Cloud-Service/services/hzncloudmsazure.getstarted15/GUID-5F69086E-E061-48F3-93D9-9705B8B5FD8A.html)
 
 > Note: Run the following commands on [Azure Cloud Shell ](https://shell.azure.com/), PowerShell Mode.
+
+
 
 The following Azure Regions are not supported for [Horizon Cloud on Azure Deployment](https://kb.vmware.com/s/article/77121):
 - France South
@@ -31,7 +35,10 @@ The following Azure Resource Provider are required by VMware Horizon:
 ## Check you Azure Subscription Available Quota
 
 The script PowerShell **Available-Quota.ps1** will check all Azure Resource Quota required by VMWare Horizon and if you have enough quota available or not.
+You should first change the **$location** variable to the Azure Region you want to deploy VMWare Horizon, and then execute the script on [Azure Cloud Shell ](https://shell.azure.com/)
+
 This is a sample script output that show quota is available to proceed with Horizon Deployment:
+
 ![Checking-quota](/checking-quota.PNG)
 
 ## Get Azure Subscription ID
