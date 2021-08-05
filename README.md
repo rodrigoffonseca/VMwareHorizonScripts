@@ -71,6 +71,18 @@ Take note of the output, you will need the following information to add you Azur
 On VMWare Horizon Universal Console add a new subscription and paste the information in the appropriate fields:
 ![HorizonConfig](/Horizon-Subscription-config.PNG)
 
+## Create VNET and Subnet for VMWare Horizon
+
+Create Azure Service Principal with **Contributor Role** at the Subscription Level for VMWare Horizon Cloud connection:
+
+## Create Azure App Service Certificate
+
+Create Azure Service Principal with **Contributor Role** at the Subscription Level for VMWare Horizon Cloud connection:
+
+## Create Azure App Service Certificate
+
+Create Azure Service Principal with **Contributor Role** at the Subscription Level for VMWare Horizon Cloud connection:
+
 
 
 
