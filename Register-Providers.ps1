@@ -5,10 +5,11 @@ foreach ($RP in $RPList)
     $temp = Get-AzResourceProvider -ProviderNamespace $RP -Location $location
     if ($temp.RegistrationState -eq "NotRegistered")
         {
+            Write-Host -BackgroundColor Green $RP "will be registered now..."
             Register-AzResourceProvider -ProviderNamespace $RP
         }
     else
         {
-        Write-Host $RP "already Registered"
+        Write-Host -BackgroundColor Green $RP "already Registered"
         }
 }
