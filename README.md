@@ -79,7 +79,7 @@ On the diagram below you have a network design and some detailed information:
 
 > NOTE: You MUST configure the script with the appropriate Address Space for VNET and Subnet that does not overlap with Customer's On-premises Address space.
 
-> NOTE: You should define the custom DNS IP address for Name Resolution. Usually it's the IP addresses of you Active Directory Servers, that may exist on Azure has Virtual Machines, or On-premises. 
+> NOTE: You should define the custom DNS IP address for Name Resolution. Usually, it's the IP addresses of you Active Directory Servers, that may exist on Azure has Virtual Machines, or On-premises. 
 
 We create a VNET with 4 non-overlapping address ranges in CIDR format in the pod's VNet, reserved for subnets.
 - Management subnet — /27 minimum - It must have SQL Service Endpoint enabled on this subnet.
@@ -91,14 +91,23 @@ After the creation of the VPN Gateway, that take around 45 minutes, you should c
 - [Connect On-Premises with Azure using VPN Site-To-Site](https://docs.microsoft.com/en-us/azure/vpn-gateway/tutorial-site-to-site-portal)
 - [Supported On-Premises VPN Devices and Configuration](https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-about-vpn-devices)
 
-## Create Azure App Service Certificate
+## Create Azure App Service Certificate to be used by External Gateway
 
-Create Azure Service Principal with **Contributor Role** at the Subscription Level for VMWare Horizon Cloud connection:
+Azure provides you the ability to buy an SSL certificate that you can export and use for Horizon Cloud External Gateway configuration. Unfortunately, we can't complete automate this procedure using scripts, but we will provide a how-to guidance on creating the certificate, converting it to PEM format and adding to you Horizon Cloud setup.
 
-## Create Azure App Service Certificate
-
-Create Azure Service Principal with **Contributor Role** at the Subscription Level for VMWare Horizon Cloud connection:
-
+1. Go to [Azure Portal]( http://portal.azure.com/), click create a resource and type “App Service Certificate”
+2. Select App Service Certificate and click Create
+3. Complete the wizard with the following information
+- Select you Resource Group where you will deploy Horizon Cloud on Azure
+- Select the certificate type:
+	- Standard will provide you a FQDN certificate like “MyVDI.contoso.com”
+	- Wildcard will give you more freedom to choose your hostname once you have a “*.contoso.com” certificate
+- Type your domain hostname
+	- If using Standard: MyVDI.contoso.com
+	- if using Wildcard: *.contoso.com
+- Type your certificate name: Mycertificate
+-  Select Autorenewal so your certificate gets renewed every year.
+[Certcreation](/certcreation.PNG)
 
 
 
