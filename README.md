@@ -15,7 +15,7 @@ The following Azure Regions are not supported for [Horizon Cloud on Azure Deploy
 
 ## Check Azure Resource Provider Status and register required Providers
 
-The script PowerShell [**Register-Providers.ps1**](https://github.com/rodrigoffonseca/VMwareHorizonScripts/blob/main/Register-Providers.ps1) will check all Azure Resource Providers required by VMWare Horizon and register the ones that are missing.
+The script PowerShell [**Register-Providers.ps1**](https://github.com/rodrigoffonseca/VMwareHorizonScripts/blob/main/scripts/Register-Providers.ps1) will check all Azure Resource Providers required by VMWare Horizon and register the ones that are missing.
 You should first change the **$location** variable to the Azure Region you want to deploy VMWare Horizon, and then execute the script on [Azure Cloud Shell ](https://shell.azure.com/)
 
 The following Azure Resource Provider are required by VMware Horizon:
@@ -34,7 +34,7 @@ The following Azure Resource Provider are required by VMware Horizon:
 
 ## Check you Azure Subscription Available Quota
 
-The script PowerShell [**Available-Quota.ps1**](https://github.com/rodrigoffonseca/VMwareHorizonScripts/blob/main/Available-quota.ps1) will check all Azure Resource Quota required by VMWare Horizon and if you have enough quota available or not.
+The script PowerShell [**Available-Quota.ps1**](https://github.com/rodrigoffonseca/VMwareHorizonScripts/blob/main/scripts/Available-quota.ps1) will check all Azure Resource Quota required by VMWare Horizon and if you have enough quota available or not.
 You should first change the **$location** variable to the Azure Region you want to deploy VMWare Horizon, and then execute the script on [Azure Cloud Shell ](https://shell.azure.com/)
 
 This is a sample script output that show quota is available to proceed with Horizon Deployment:
@@ -73,7 +73,7 @@ On VMWare Horizon Universal Console add a new subscription and paste the informa
 
 ## Create VNET and Subnet for VMWare Horizon
 
-The Script [**Create-Network.ps1**](https://github.com/rodrigoffonseca/VMwareHorizonScripts/blob/main/Create-Network.ps1) will help you to create a VNET and all required subnets to support VMWare Horizon deploy and a VPN Site to Site Connectivity with the minimum requirements needed. 
+The Script [**Create-Network.ps1**](https://github.com/rodrigoffonseca/VMwareHorizonScripts/blob/main/scripts/Create-Network.ps1) will help you to create a VNET and all required subnets to support VMWare Horizon deploy and a VPN Site to Site Connectivity with the minimum requirements needed. 
 On the diagram below you have a network design and some detailed information:
 ![NetworkDesign](/Images/networkdesign.PNG)
 
