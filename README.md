@@ -78,6 +78,7 @@ On the diagram below you have a network design and some detailed information:
 ![NetworkDesign](/networkdesign.PNG)
 
 > NOTE: You MUST configure the script with the appropriate Address Space for VNET and Subnet that does not overlap with Customer's On-premises Address space.
+
 > NOTE: You should define the custom DNS IP address for Name Resolution. Usually it's the IP addresses of you Active Directory Servers, that may exist on Azure has Virtual Machines, or On-premises. 
 
 We create a VNET with 4 non-overlapping address ranges in CIDR format in the pod's VNet, reserved for subnets.
