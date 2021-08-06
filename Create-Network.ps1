@@ -32,7 +32,7 @@ New-AzResourceGroup -Name $RG -Location $Location
 # Create virtual networks and Subnets for Horizon Service
 
 $VSubNet1 = New-AzVirtualNetworkSubnetConfig -Name $VSubNetVMName -AddressPrefix $SubnetVMPrefix
-$VSubNet2 = New-AzVirtualNetworkSubnetConfig -Name $VSubNetMGMTName -AddressPrefix $SubnetMGMTPrefix
+$VSubNet2 = New-AzVirtualNetworkSubnetConfig -Name $VSubNetMGMTName -AddressPrefix $SubnetMGMTPrefix -ServiceEndpoint Microsoft.Sql
 $VSubNet3 = New-AzVirtualNetworkSubnetConfig -Name $VSubNetDMZName -AddressPrefix $SubnetDMZPrefix
 $GWSubNet1 = New-AzVirtualNetworkSubnetConfig -Name $GWSubName -AddressPrefix $GWSubPrefix
 $vnetHSoA = New-AzVirtualNetwork -Name $VNetName1 -ResourceGroupName $RG -Location $Location -AddressPrefix $VNet1Prefix -Subnet $VSubNet1,$VSubNet2,$VSubNet3,$GWSubNet1 -DnsServer $DNS1,$DNS2
