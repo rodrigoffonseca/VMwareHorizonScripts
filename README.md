@@ -107,7 +107,8 @@ Azure provides you the ability to buy an SSL certificate that you can export and
 	- if using Wildcard: *.contoso.com
 - Type your certificate name: Mycertificate
 -  Select Autorenewal so your certificate gets renewed every year.
-[Certcreation](/certcreation.PNG)
+
+![Certcreation](/certcreation.PNG)
 
 
 
