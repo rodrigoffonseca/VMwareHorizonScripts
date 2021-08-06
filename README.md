@@ -75,7 +75,20 @@ On VMWare Horizon Universal Console add a new subscription and paste the informa
 
 The Script [**Create-Network.ps1**](https://github.com/rodrigoffonseca/VMwareHorizonScripts/blob/main/Create-Network.ps1) will help you to create a VNET and all required subnets to support VMWare Horizon deploy and a VPN Site to Site Connectivity with the minimum requirements needed. 
 On the diagram below you have a network design and some detailed information:
+![NetworkDesign](/networkdesign.PNG)
 
+> NOTE: You MUST configure the script with the appropriate Address Space for VNET and Subnet that does not overlap with Customer's On-premises Address space.
+> NOTE: You should define the custom DNS IP address for Name Resolution. Usually it's the IP addresses of you Active Directory Servers, that may exist on Azure has Virtual Machines, or On-premises. 
+
+We create a VNET with 4 non-overlapping address ranges in CIDR format in the pod's VNet, reserved for subnets.
+- Management subnet — /27 minimum - It must have SQL Service Endpoint enabled on this subnet.
+- VM subnet - Primary (tenant) — /27 minimum with /24 - /22 preferred, based on the number of desktops and RDS servers
+- DMZ subnet — /28 minimum when Unified Access Gateway is deployed in the pod's VNet (optional)
+- Gateway subnet — /28 minimum, needed for VPN Gateway deployment to allow VPN Site-To-Site communication
+
+After the creation of the VPN Gateway, that take around 45 minutes, you should configure both customer's on-premises gateway and Azure VPN Gateway to stablish the network connectivity. Please check this documentation for more information: 
+- [Connect On-Premises with Azure using VPN Site-To-Site](https://docs.microsoft.com/en-us/azure/vpn-gateway/tutorial-site-to-site-portal)
+- [Supported On-Premises VPN Devices and Configuration](https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-about-vpn-devices)
 
 ## Create Azure App Service Certificate
 
