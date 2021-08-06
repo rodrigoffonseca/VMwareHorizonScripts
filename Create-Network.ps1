@@ -1,3 +1,4 @@
+#This script create a VNET, SUBnet, configure custom DNS settings and create a VPN gateway to allow you to deploy VMWare Horizon Cloud on Azure and setup Site to Site VPN.
 #Define your subscription, resource group and Location
 $Sub1           = "Azure Subscription 1"
 $RG           = "Your-Azure-ResourceGroup-For-Horizon"
