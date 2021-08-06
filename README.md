@@ -122,16 +122,66 @@ Azure provides you the ability to buy an SSL certificate that you can export and
 ![Certcreation](/certvalidation.PNG)
 
 11. Now you need to download the certificate in PFX format with its Private Key
-12. Go to your Azure Key Vault, Select Secrets on the Left-Side Menu
+12. Go to your Azure Key Vault, Select **Secrets** on the Left-Side Menu
 14. Click on secret that start with your Certificate Name you defined on Step 3.
 ![keyvault1](/keyvault1.PNG)
 15. Click on hexadecimal code under Current Version
 ![keyvault2](/keyvault2.PNG)
-17. Click Download as a Certificate on teh bottom of the page
+17. Click **Download as a Certificate** on teh bottom of the page
 ![keyvault3](/keyvault3.PNG)
 
-19. 
+19. Now your certificate was download to your computer in PFX format and we need to convert it to PEM format, what is supported by VMWahre Horizon Cloud.
+20. Go to your downloaded certificate and click Install PFX
+21. Select Local Manchine and click Next
 
+![certimport1](/certimport1.PNG)
+
+23. Click Next on File to Import
+24. On Private Key Protection left the password field **empty** and check the option **"Mark This Key As Exportable"**
+
+![certimport2](/certimport2.PNG)
+
+26. Click Next and then Finish to complete the certificate import.
+27. Now open the Command Prompt (CMD) and run this command: certlm.msc
+28. It will open the Cert manager snapin
+29. Go to Personal, Certificates, and you will be able to locate a certificate with the same FQDN name you defined in Step 3.
+
+![certimport3](/certimport3.PNG)
+
+30. Double-Click the certificate, go to **Certification Path** tab and make user you can see both root and Intermediate certification as the image below:
+
+![certimport4](/certimport4.PNG)
+
+31. Now go to **Details** tab and click **Copy To File**
+32. Click Next on the Certificate Export Wizard
+33. Select **Yes, Export the private key** and click Next
+
+![certimport5](/certimport5.PNG)
+
+34. Make sure **Include all certificates in the certificate path if possible** is selected and click Next
+
+![certimport6](/certimport6.PNG)
+
+35. Type a password to protect your exported certificate and click Next. Take note of this password, you will need it later.
+
+![certimport7](/certimport7.PNG)
+
+36. Type the path and name of your certificate to be exported, click Next and then click Finish.
+
+![certimport8](/certimport8.PNG)
+
+37. Now that your certificate is exported with Private Key and all Certificate Chain inside it, we can convert it to PEM format
+38. Open your Command-Prompt (CMD) and run the following command
+
+> Note: To complete this step you need to have OpenSSL command line installed on you computer. If you don't have it, use this link to [install OpenSSL](https://www.xolphin.com/support/OpenSSL/OpenSSL_-_Installation_under_Windows)
+
+> openssl pkcs12 -in <Your-Certificate-Name.PFX> -out <New-Certificate-Name.PEM> -nodes
+
+![certimport9](/certimport9.PNG)
+
+40. Now your certificate is ready to upload at Horizon Cloud POD wizard. Select your .PEM certificate file and upload it.
+
+![certimport10](/certimport10.PNG)
 
 
 
