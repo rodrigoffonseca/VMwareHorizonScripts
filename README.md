@@ -97,19 +97,40 @@ Azure provides you the ability to buy an SSL certificate that you can export and
 
 1. Go to [Azure Portal]( http://portal.azure.com/), click create a resource and type “App Service Certificate”
 2. Select App Service Certificate and click Create
-3. Complete the wizard with the following information
-- Select you Resource Group where you will deploy Horizon Cloud on Azure
-- Select the certificate type:
+3. Complete the wizard with the following information:
+  - Select your Resource Group where you will deploy Horizon Cloud on Azure
+  - Select the certificate type:
 	- Standard will provide you a FQDN certificate like “MyVDI.contoso.com”
 	- Wildcard will give you more freedom to choose your hostname once you have a “*.contoso.com” certificate
-- Type your domain hostname
+  - Type your domain hostname
 	- If using Standard: MyVDI.contoso.com
 	- if using Wildcard: *.contoso.com
-- Type your certificate name: Mycertificate
--  Select Autorenewal so your certificate gets renewed every year.
+  - Type your certificate name: Mycertificate
+  -  Select Autorenewal so your certificate gets renewed every year.
 
 ![Certcreation](/certcreation.PNG)
 
+4. Click Review And Create, and then click Create.
+5. After the certificate is created, you need to complete some validation steps to have it issued and available for download
+6. Open your new created certificate and go to "Certificate Configuration" on the left-side menu
+7. Configure your certificate store with Azure KeyVault
+- If you don't have a Azure KeyVault, you can create a new KeyVault with the following PowerShell command:
+> New-AzKeyVault -VaultName 'Your-KeyVault-Name' -ResourceGroupName 'Your-ResourceGroup-Name' -Location 'East US'
+9. Verify your domain name using one of the methods recommend on the portal. Creating a TXT record on your Public DNS zone is probably the easier way to do it.
+10. Once you complete all validation steps, your certificate will be issued and ready to be used.
+
+![Certcreation](/certvalidation.PNG)
+
+11. Now you need to download the certificate in PFX format with its Private Key
+12. Go to your Azure Key Vault, Select Secrets on the Left-Side Menu
+14. Click on secret that start with your Certificate Name you defined on Step 3.
+![keyvault1](/keyvault1.PNG)
+15. Click on hexadecimal code under Current Version
+![keyvault2](/keyvault2.PNG)
+17. Click Download as a Certificate on teh bottom of the page
+![keyvault3](/keyvault3.PNG)
+
+19. 
 
 
 
