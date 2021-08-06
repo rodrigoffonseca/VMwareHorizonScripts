@@ -39,7 +39,7 @@ You should first change the **$location** variable to the Azure Region you want 
 
 This is a sample script output that show quota is available to proceed with Horizon Deployment:
 
-![Checking-quota](/checking-quota.PNG)
+![Checking-quota](/Images/checking-quota.PNG)
 
 ## Get Azure Subscription ID
 
@@ -48,7 +48,7 @@ Get you Azure Subscription ID with the following command:
 > Get-AzSubscription
 
 Take note of the output and copy your Subscription ID:
-![SubscriptionID](/subscription-id.PNG)
+![SubscriptionID](/Images/subscription-id.PNG)
 
 ## Create Service Principal
 Create Azure Service Principal with **Contributor Role** at the Subscription Level for VMWare Horizon Cloud connection:
@@ -69,13 +69,13 @@ Take note of the output, you will need the following information to add you Azur
 
 
 On VMWare Horizon Universal Console add a new subscription and paste the information in the appropriate fields:
-![HorizonConfig](/Horizon-Subscription-config.PNG)
+![HorizonConfig](/Images/Horizon-Subscription-config.PNG)
 
 ## Create VNET and Subnet for VMWare Horizon
 
 The Script [**Create-Network.ps1**](https://github.com/rodrigoffonseca/VMwareHorizonScripts/blob/main/Create-Network.ps1) will help you to create a VNET and all required subnets to support VMWare Horizon deploy and a VPN Site to Site Connectivity with the minimum requirements needed. 
 On the diagram below you have a network design and some detailed information:
-![NetworkDesign](/networkdesign.PNG)
+![NetworkDesign](/Images/networkdesign.PNG)
 
 > NOTE: You MUST configure the script with the appropriate Address Space for VNET and Subnet that does not overlap with Customer's On-premises Address space.
 
@@ -108,7 +108,7 @@ Azure provides you the ability to buy an SSL certificate that you can export and
   - Type your certificate name: Mycertificate
   -  Select Autorenewal so your certificate gets renewed every year.
 
-![Certcreation](/certcreation.PNG)
+![Certcreation](/Images/certcreation.PNG)
 
 4. Click Review And Create, and then click Create.
 5. After the certificate is created, you need to complete some validation steps to have it issued and available for download
@@ -119,7 +119,7 @@ Azure provides you the ability to buy an SSL certificate that you can export and
 9. Verify your domain name using one of the methods recommend on the portal. Creating a TXT record on your Public DNS zone is probably the easier way to do it.
 10. Once you complete all validation steps, your certificate will be issued and ready to be used.
 
-![Certcreation](/certvalidation.PNG)
+![Certcreation](/Images/certvalidation.PNG)
 
 11. Now you need to download the certificate in PFX format with its Private Key
 12. Go to your Azure Key Vault, Select **Secrets** on the Left-Side Menu
@@ -134,41 +134,41 @@ Azure provides you the ability to buy an SSL certificate that you can export and
 20. Go to your downloaded certificate and click Install PFX
 21. Select Local Manchine and click Next
 
-![certimport1](/certimport1.PNG)
+![certimport1](/Images/certimport1.PNG)
 
 23. Click Next on File to Import
 24. On Private Key Protection left the password field **empty** and check the option **"Mark This Key As Exportable"**
 
-![certimport2](/certimport2.PNG)
+![certimport2](/Images/certimport2.PNG)
 
 26. Click Next and then Finish to complete the certificate import.
 27. Now open the Command Prompt (CMD) and run this command: certlm.msc
 28. It will open the Cert manager snapin
 29. Go to Personal, Certificates, and you will be able to locate a certificate with the same FQDN name you defined in Step 3.
 
-![certimport3](/certimport3.PNG)
+![certimport3](/Images/certimport3.PNG)
 
 30. Double-Click the certificate, go to **Certification Path** tab and make user you can see both root and Intermediate certification as the image below:
 
-![certimport4](/certimport4.PNG)
+![certimport4](/Images/certimport4.PNG)
 
 31. Now go to **Details** tab and click **Copy To File**
 32. Click Next on the Certificate Export Wizard
 33. Select **Yes, Export the private key** and click Next
 
-![certimport5](/certimport5.PNG)
+![certimport5](/Images/certimport5.PNG)
 
 34. Make sure **Include all certificates in the certificate path if possible** is selected and click Next
 
-![certimport6](/certimport6.PNG)
+![certimport6](/Images/certimport6.PNG)
 
 35. Type a password to protect your exported certificate and click Next. Take note of this password, you will need it later.
 
-![certimport7](/certimport7.PNG)
+![certimport7](/Images/certimport7.PNG)
 
 36. Type the path and name of your certificate to be exported, click Next and then click Finish.
 
-![certimport8](/certimport8.PNG)
+![certimport8](/Images/certimport8.PNG)
 
 37. Now that your certificate is exported with Private Key and all Certificate Chain inside it, we can convert it to PEM format
 38. Open your Command-Prompt (CMD) and run the following command
@@ -177,11 +177,11 @@ Azure provides you the ability to buy an SSL certificate that you can export and
 
 > openssl pkcs12 -in <Your-Certificate-Name.PFX> -out <New-Certificate-Name.PEM> -nodes
 
-![certimport9](/certimport9.PNG)
+![certimport9](/Images/certimport9.PNG)
 
 40. Now your certificate is ready to upload at Horizon Cloud POD wizard. Select your .PEM certificate file and upload it.
 
-![certimport10](/certimport10.PNG)
+![certimport10](/Images/certimport10.PNG)
 
 
 
