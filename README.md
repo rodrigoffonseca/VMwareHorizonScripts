@@ -124,11 +124,11 @@ Azure provides you the ability to buy an SSL certificate that you can export and
 11. Now you need to download the certificate in PFX format with its Private Key
 12. Go to your Azure Key Vault, Select **Secrets** on the Left-Side Menu
 14. Click on secret that start with your Certificate Name you defined on Step 3.
-![keyvault1](/keyvault1.PNG)
+![keyvault1](/Images/keyvault1.PNG)
 15. Click on hexadecimal code under Current Version
-![keyvault2](/keyvault2.PNG)
+![keyvault2](/Images/keyvault2.PNG)
 17. Click **Download as a Certificate** on teh bottom of the page
-![keyvault3](/keyvault3.PNG)
+![keyvault3](/Images/keyvault3.PNG)
 
 19. Now your certificate was download to your computer in PFX format and we need to convert it to PEM format, what is supported by VMWahre Horizon Cloud.
 20. Go to your downloaded certificate and click Install PFX
