@@ -198,10 +198,10 @@ Azure provides you the ability to buy an SSL certificate that you can export and
 The PowerShell Script [**Config-AD.ps1**](https://github.com/rodrigoffonseca/VMwareHorizonScripts/blob/main/scripts/Config-AD.ps1) will help you to configure your Active Directory Domain Service Environment with the appropriate permissions required to complete Horizon on Azure Deploy. It's important to highlight that your Domain Controllers can be On-Premises or 
 on Azure. The Script will works for both scenarios, but it's important that in case you are using On-Premises Domain Controllers, the VNET where you will deploy Horizon must have connectivity (VPN or ExpressRoute) to your On-Premises network, where your DNS and Domain Controllers are.
 The Script will:
-1 - Create two Bind User with Password defined by you
-2 - Create a Group and add the Bind users to this group
-3 - Create an Organizational Unity where both users, group and Horizon VMs will reside
-4 - Delegate requirted permissions for the users on the OU
+- Create two Bind User with Password defined by you
+- Create a Group and add the Bind users to this group
+- Create an Organizational Unity where both users, group and Horizon VMs will reside
+- Delegate requirted permissions for the users on the OU
 
 It's important that you run the PowerShell script directly in a Domain Controller server with Domain Admin rigths and with [Active Directory PowerShell Module](https://docs.microsoft.com/en-us/powershell/module/activedirectory/?view=windowsserver2019-ps) installed.
 
