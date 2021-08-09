@@ -1,11 +1,10 @@
 > Disclaimer: All scripts provided here are AS-IS and should be used with caution. We DO NOT offer any warranties.
 
-# VMwareHorizonScripts
-Repo with some Azure scripts to prepare your Azure environment to VMware Horizon deployment. All steps, commands and scripts present here were created to address the requirement of [VMWare Horizon Cloud on Azure Checklist](https://docs.vmware.com/en/VMware-Horizon-Cloud-Service/services/hzncloudmsazure.getstarted15/GUID-5F69086E-E061-48F3-93D9-9705B8B5FD8A.html)
+# Prepare Azure for VMWare Horizon Cloud Deployment
+
+This Repo contains scripts to prepare your Azure environment to VMware Horizon deployment. All steps, commands and scripts present here were created to address the requirements of [VMWare Horizon Cloud on Azure Checklist](https://docs.vmware.com/en/VMware-Horizon-Cloud-Service/services/hzncloudmsazure.getstarted15/GUID-5F69086E-E061-48F3-93D9-9705B8B5FD8A.html)
 
 > Note: Run the following commands on [Azure Cloud Shell ](https://shell.azure.com/), PowerShell Mode.
-
-
 
 The following Azure Regions are not supported for [Horizon Cloud on Azure Deployment](https://kb.vmware.com/s/article/77121):
 - France South
