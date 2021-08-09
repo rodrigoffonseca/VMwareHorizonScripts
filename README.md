@@ -196,6 +196,7 @@ The Script will:
 It's important that you run the PowerShell script directly in a Domain Controller server with Domain Admin rigths and with [Active Directory PowerShell Module](https://docs.microsoft.com/en-us/powershell/module/activedirectory/?view=windowsserver2019-ps) installed.
 
 The expect script output is:
+
 ![output](/Images/output.PNG)
 
 Take not of the OU Path, Bind User name and password, you will use it during your Horizon Deployment.
