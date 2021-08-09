@@ -1,5 +1,16 @@
 > Disclaimer: All scripts provided here are AS-IS and should be used with caution. We DO NOT offer any warranties.
 
+
+- [Prepare Azure for VMWare Horizon Cloud Deployment](#prepare-azure-for-vmware-horizon-cloud-deployment)
+  * [Check Azure Resource Provider Status and register required Providers](#check-azure-resource-provider-status-and-register-required-providers)
+  * [Check you Azure Subscription Available Quota](#check-you-azure-subscription-available-quota)
+  * [Get Azure Subscription ID](#get-azure-subscription-id)
+  * [Create Service Principal](#create-service-principal)
+  * [Create VNET and Subnet for VMWare Horizon](#create-vnet-and-subnet-for-vmware-horizon)
+  * [Create Azure App Service Certificate to be used by External Gateway](#create-azure-app-service-certificate-to-be-used-by-external-gateway)
+  * [Configure your Active Directory Domain Services with appropriate permissions](#configure-your-active-directory-domain-services-with-appropriate-permissions)
+ 
+ 
 # Prepare Azure for VMWare Horizon Cloud Deployment
 
 This Repo contains scripts to prepare your Azure environment to VMware Horizon deployment. All steps, commands and scripts present here were created to address the requirements of [VMWare Horizon Cloud on Azure Checklist](https://docs.vmware.com/en/VMware-Horizon-Cloud-Service/services/hzncloudmsazure.getstarted15/GUID-5F69086E-E061-48F3-93D9-9705B8B5FD8A.html)
