@@ -201,7 +201,7 @@ The Script will:
 - Create two Bind User with Password defined by you
 - Create a Group and add the Bind users to this group
 - Create an Organizational Unity where both users, group and Horizon VMs will reside
-- Delegate requirted permissions for the users on the OU
+- Delegate required permissions for the users to be able to join VM to the OU
 
 It's important that you run the PowerShell script directly in a Domain Controller server with Domain Admin rigths and with [Active Directory PowerShell Module](https://docs.microsoft.com/en-us/powershell/module/activedirectory/?view=windowsserver2019-ps) installed.
 
