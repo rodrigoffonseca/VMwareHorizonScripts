@@ -1,8 +1,8 @@
 #This script create a VNET, SUBnet, configure custom DNS settings and create a VPN gateway to allow you to deploy VMWare Horizon Cloud on Azure and setup Site to Site VPN.
 #Define your subscription, resource group and Location
-$Sub1           = "Azure Subscription 1"
-$RG           = "Your-Azure-ResourceGroup-For-Horizon"
-$Location     = "eastus"
+$Sub1           = "Azure Subscription 1" #Define your Subscription Name
+$RG           = "Your-Azure-ResourceGroup-For-Horizon" #Define your Resource Group Name
+$Location     = "eastus" #Define your location/Azure Region
 
 #Define your VNet and Subnet Settings
 $VNetHorizonPrefix = "172.16.0.0/20"
@@ -21,7 +21,7 @@ $GWSubPrefix   = "172.16.4.64/27"
 $GWIPName1     = "HSoA-VNetGW-01-IP"
 $GWIPconfName1 = "gwipconf1"
 
-#Your Custom DNS (Same from AD DS)
+#Your Custom DNS (Same from AD DS servers, that will provide domain-join and name resolution for Horizon VMs)
 $DNS1           = "10.0.0.4"
 $DNS2           = "10.0.0.250"
 
