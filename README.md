@@ -89,7 +89,7 @@ On the diagram below you have a network design and some detailed information:
 
 > NOTE: You MUST configure the script with the appropriate Address Space for VNET and Subnet that does not overlap with Customer's On-premises Address space.
 
-> NOTE: You should define the custom DNS IP address for Name Resolution. Usually, it's the IP addresses of you Active Directory Servers, that may exist on Azure has Virtual Machines, or On-premises. 
+> NOTE: You should define the custom DNS IP address for Name Resolution on [Azure VNET](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances#name-resolution-that-uses-your-own-dns-server). Usually, it's the IP addresses of your Active Directory Servers, that may exist on Azure as Virtual Machines, or On-premises Servers (Domain Controllers), and other option is use [Azure AD Domain Services](https://docs.microsoft.com/en-us/azure/active-directory-domain-services/overview) as managed-Directory Services. 
 
 We create a VNET with 4 non-overlapping address ranges in CIDR format in the pod's VNet, reserved for subnets.
 - Management subnet — /27 minimum - It must have SQL Service Endpoint enabled on this subnet.
@@ -209,7 +209,7 @@ The expect script output is:
 
 ![output](/Images/output.PNG)
 
-Take not of the OU Path, Bind User name and password, you will use it during your Horizon Deployment.
+Take not of the OU Path, Bind User name and password, you will use it during your Horizon Cloud Deployment.
 
 
 
