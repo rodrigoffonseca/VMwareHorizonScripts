@@ -1,12 +1,13 @@
 #This script helps you to prepare your On-Premises Active Directory Domain Services for Horizon Cloud Deployment
 #The script will create one Organizational Unit, two users, one group and will delegate appropriate permissions to the group to be able to join HOrizon VMs to the domain
 #Define Variables with the appropriate values for your environment
-$OUName = "HOrizon-Azure"
-$BinduserName1 = "binduser1"
-$BinduserName2 = "binduser2"
-$BindPWD = "P@ssword01"
+$OUName = "HOrizon-Azure" #Define your AD Organization Unit Name
+$BinduserName1 = "binduser1" #Define your bind user name for Horizon Cloud, you will use it later 
+$BinduserName2 = "binduser2" #Define your bind user name for Horizon Cloud, you will use it later
+$BindPWD = "P@ssword01" #Define your bind user password for Horizon Cloud, you will use it later
 $bindGroupName = "Horizon-Bind"
-$UPNSuffix = "contoso.com.br"
+$UPNSuffix = "contoso.com.br" #Define your Domain UPN Suffix
+
 #Create New OU and get OU Path
 New-ADOrganizationalUnit -Name $OUName
 $OUpath = Get-ADOrganizationalUnit -Filter 'Name -like $OUName'
