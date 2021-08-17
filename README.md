@@ -138,12 +138,12 @@ Azure provides you the ability to buy an SSL certificate that you can export and
 ![keyvault1](/Images/keyvault1.PNG)
 15. Click on hexadecimal code under Current Version
 ![keyvault2](/Images/keyvault2.PNG)
-17. Click **Download as a Certificate** on teh bottom of the page
+17. Click **Download as a Certificate** on the bottom of the page
 ![keyvault3](/Images/keyvault3.PNG)
 
-19. Now your certificate was download to your computer in PFX format and we need to convert it to PEM format, what is supported by VMWahre Horizon Cloud.
+19. Now your certificate was download to your computer in PFX format and we need to convert it to PEM format, what is supported by VMWare Horizon Cloud.
 20. Go to your downloaded certificate and click Install PFX
-21. Select Local Manchine and click Next
+21. Select Local Machine and click Next
 
 ![certimport1](/Images/certimport1.PNG)
 
@@ -154,7 +154,7 @@ Azure provides you the ability to buy an SSL certificate that you can export and
 
 26. Click Next and then Finish to complete the certificate import.
 27. Now open the Command Prompt (CMD) and run this command: certlm.msc
-28. It will open the Cert manager snapin
+28. It will open the Cert manager snap-in
 29. Go to Personal, Certificates, and you will be able to locate a certificate with the same FQDN name you defined in Step 3.
 
 ![certimport3](/Images/certimport3.PNG)
@@ -184,7 +184,7 @@ Azure provides you the ability to buy an SSL certificate that you can export and
 37. Now that your certificate is exported with Private Key and all Certificate Chain inside it, we can convert it to PEM format
 38. Open your Command-Prompt (CMD) and run the following command
 
-> Note: To complete this step you need to have OpenSSL command line installed on you computer. If you don't have it, use this link to [install OpenSSL](https://www.xolphin.com/support/OpenSSL/OpenSSL_-_Installation_under_Windows)
+> Note: To complete this step you need to have OpenSSL command line installed on your computer. If you don't have it, use this link to [install OpenSSL](https://www.xolphin.com/support/OpenSSL/OpenSSL_-_Installation_under_Windows)
 
 > openssl pkcs12 -in <Your-Certificate-Name.PFX> -out <New-Certificate-Name.PEM> -nodes
 
@@ -197,11 +197,11 @@ Azure provides you the ability to buy an SSL certificate that you can export and
 ## Configure your Active Directory Domain Services with appropriate permissions
 
 The PowerShell Script [**Config-AD.ps1**](https://github.com/rodrigoffonseca/VMwareHorizonScripts/blob/main/scripts/Config-AD.ps1) will help you to configure your Active Directory Domain Service Environment with the appropriate permissions required to complete Horizon on Azure Deploy. It's important to highlight that your Domain Controllers can be On-Premises or on Azure. 
-The Script will works for both scenarios, but it's important that in case you are using On-Premises Domain Controllers, the VNET where you will deploy Horizon must have connectivity (VPN or ExpressRoute) to your On-Premises network, where your DNS and Domain Controllers are.
-The Script will:
+The Script will work for both scenarios, but it's important that in case you are using On-Premises Domain Controllers, the VNET where you will deploy Horizon must have connectivity (VPN or ExpressRoute) to your On-Premises network, where your DNS and Domain Controllers are.
+The Script will execute the following actions:
 - Create two Bind User with Password defined by you
 - Create a Group and add the Bind users to this group
-- Create an Organizational Unity where both users, group and Horizon VMs will reside
+- Create an Organizational Unit where both users, group and Horizon VMs will reside
 - Delegate required permissions for the users to be able to join VM to the OU
 
 It's important that you run the PowerShell script directly in a Domain Controller server with Domain Admin rigths and with [Active Directory PowerShell Module](https://docs.microsoft.com/en-us/powershell/module/activedirectory/?view=windowsserver2019-ps) installed.
@@ -210,17 +210,17 @@ The expect script output is:
 
 ![output](/Images/output.PNG)
 
-Take not of the OU Path, Bind User name and password, you will use it during your Horizon Cloud Deployment.
+Take note of the OU Path, Bind Username and password, you will use it during your Horizon Cloud Deployment.
 
 ## Configure DNS CNAME for your Horizon external Gateway
 
-> NOTE: In this case we're assuming that you host your Public DNS zone in Azure. In Case you host your Public DNS zone elsewhere, please follow your provider's instructions to create the DNS record. The script will provid you the cname you should use to register.
+> NOTE: In this case we're assuming that you host your Public DNS zone in Azure. In Case you host your Public DNS zone elsewhere, please follow your provider's instructions to create the DNS record. The script will provide you the CNAME you should use to register.
 
 The PowerShell Script [**Config-DNSexternal.ps1**](https://github.com/rodrigoffonseca/VMwareHorizonScripts/blob/main/scripts/Config-AD.ps1) will help you to configure your Azure Public DNS Zone to add a CNAME record of your Horizon External Gateway that points to UAG Load Balancer resource.
 With this script you can>
-- Create a new Azure DNS Zone, if you haven't one created on azure or registered in other DNS provider
+- Create a new Azure DNS Zone, if you haven't one created on azure or registered in another DNS provider
 - Display the CNAME value you should use to create the DNS record in other DNS provider, if you do not host it in Azure.
-- Add a CNAME record to the zone that will map to UAG (Horizon External Load balancer) DNS Name
+- Add a CNAME record to the Azure DNS Zone that will map to UAG (Horizon External Load balancer) DNS Name
 
 
 
