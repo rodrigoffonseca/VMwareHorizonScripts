@@ -9,6 +9,7 @@
   * [Create VNET and Subnet for VMWare Horizon](#create-vnet-and-subnet-for-vmware-horizon)
   * [Create Azure App Service Certificate to be used by External Gateway](#create-azure-app-service-certificate-to-be-used-by-external-gateway)
   * [Configure your Active Directory Domain Services with appropriate permissions](#configure-your-active-directory-domain-services-with-appropriate-permissions)
+  * [Configure DNS CNAME for your Horizon external Gateway](#Configure-dns-cname-for-your-horizon-external-gateway)
  
  
 # Prepare Azure for VMWare Horizon Cloud Deployment
@@ -195,8 +196,8 @@ Azure provides you the ability to buy an SSL certificate that you can export and
 
 ## Configure your Active Directory Domain Services with appropriate permissions
 
-The PowerShell Script [**Config-AD.ps1**](https://github.com/rodrigoffonseca/VMwareHorizonScripts/blob/main/scripts/Config-AD.ps1) will help you to configure your Active Directory Domain Service Environment with the appropriate permissions required to complete Horizon on Azure Deploy. It's important to highlight that your Domain Controllers can be On-Premises or 
-on Azure. The Script will works for both scenarios, but it's important that in case you are using On-Premises Domain Controllers, the VNET where you will deploy Horizon must have connectivity (VPN or ExpressRoute) to your On-Premises network, where your DNS and Domain Controllers are.
+The PowerShell Script [**Config-AD.ps1**](https://github.com/rodrigoffonseca/VMwareHorizonScripts/blob/main/scripts/Config-AD.ps1) will help you to configure your Active Directory Domain Service Environment with the appropriate permissions required to complete Horizon on Azure Deploy. It's important to highlight that your Domain Controllers can be On-Premises or on Azure. 
+The Script will works for both scenarios, but it's important that in case you are using On-Premises Domain Controllers, the VNET where you will deploy Horizon must have connectivity (VPN or ExpressRoute) to your On-Premises network, where your DNS and Domain Controllers are.
 The Script will:
 - Create two Bind User with Password defined by you
 - Create a Group and add the Bind users to this group
@@ -210,6 +211,15 @@ The expect script output is:
 ![output](/Images/output.PNG)
 
 Take not of the OU Path, Bind User name and password, you will use it during your Horizon Cloud Deployment.
+
+## Configure DNS CNAME for your Horizon external Gateway
+
+> NOTE: In This case we're assumig that you host your Public DNS zone in Azure. In Case you host your Public DNS zone at other providers, please follow the provider's instructions to create the DNS record.
+
+The PowerShell Script [**Config-DNSexternal.ps1**](https://github.com/rodrigoffonseca/VMwareHorizonScripts/blob/main/scripts/Config-AD.ps1) will help you to configure your Azure Public DNS Zone to add a CNAME record of your Horizon External Gateway that points to UAG Load Balancer resource.
+With this script you can>
+- Create a new Azure DNS Zone, if you haven't one created on azure or registered in other DNS provider
+- Add a CNAME record to the zone that will map to UAG (Horizon External Load balancer) DNS Name
 
 
 
