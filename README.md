@@ -88,7 +88,7 @@ The Script [**Create-Network.ps1**](https://github.com/rodrigoffonseca/VMwareHor
 On the diagram below you have a network design and some detailed information:
 ![NetworkDesign](/Images/networkdesign.PNG)
 
-> NOTE: You MUST configure the script with the appropriate Address Space for VNET and Subnet that does not overlap with Customer's On-premises Address space.
+> NOTE: You MUST configure the script variables with the appropriate Address Space for VNET and Subnet that does not overlap with Customer's On-premises Address space.
 
 > NOTE: You should define the custom DNS IP address for Name Resolution on [Azure VNET](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances#name-resolution-that-uses-your-own-dns-server). Usually, it's the IP addresses of your Active Directory Servers, that may exist on Azure as Virtual Machines, or On-premises Servers (Domain Controllers), and other option is use [Azure AD Domain Services](https://docs.microsoft.com/en-us/azure/active-directory-domain-services/overview) as managed-Directory Services. 
 
@@ -198,6 +198,7 @@ Azure provides you the ability to buy an SSL certificate that you can export and
 
 The PowerShell Script [**Config-AD.ps1**](https://github.com/rodrigoffonseca/VMwareHorizonScripts/blob/main/scripts/Config-AD.ps1) will help you to configure your Active Directory Domain Service Environment with the appropriate permissions required to complete Horizon on Azure Deploy. It's important to highlight that your Domain Controllers can be On-Premises or on Azure. 
 The Script will work for both scenarios, but it's important that in case you are using On-Premises Domain Controllers, the VNET where you will deploy Horizon must have connectivity (VPN or ExpressRoute) to your On-Premises network, where your DNS and Domain Controllers are.
+You MUST configure the script variable with the appropriate user name, group name, OU and password you want to set.
 The Script will execute the following actions:
 - Create two Bind User with Password defined by you
 - Create a Group and add the Bind users to this group
@@ -218,6 +219,7 @@ Take note of the OU Path, Bind Username and password, you will use it during you
 
 The PowerShell Script [**Config-DNSexternal.ps1**](https://github.com/rodrigoffonseca/VMwareHorizonScripts/blob/main/scripts/Config-AD.ps1) will help you to configure your Azure Public DNS Zone to add a CNAME record of your Horizon External Gateway that points to UAG Load Balancer resource. 
 The DNS name will be the same of the certificate Domain Name you defined at step 3 of **Create Azure App Service Certificate to be used by External Gateway** section.
+You MUST configure the script variable to set the correct DNS zone name, DNS record name, Resource Group and Location before executing it.
 
 With this script you can:
 - Create a new Azure DNS Zone, if you haven't one created on azure or registered in another DNS provider
