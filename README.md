@@ -216,8 +216,10 @@ Take note of the OU Path, Bind Username and password, you will use it during you
 
 > NOTE: In this case we're assuming that you host your Public DNS zone in Azure. In Case you host your Public DNS zone elsewhere, please follow your provider's instructions to create the DNS record. The script will provide you the CNAME you should use to register.
 
-The PowerShell Script [**Config-DNSexternal.ps1**](https://github.com/rodrigoffonseca/VMwareHorizonScripts/blob/main/scripts/Config-AD.ps1) will help you to configure your Azure Public DNS Zone to add a CNAME record of your Horizon External Gateway that points to UAG Load Balancer resource.
-With this script you can>
+The PowerShell Script [**Config-DNSexternal.ps1**](https://github.com/rodrigoffonseca/VMwareHorizonScripts/blob/main/scripts/Config-AD.ps1) will help you to configure your Azure Public DNS Zone to add a CNAME record of your Horizon External Gateway that points to UAG Load Balancer resource. 
+The DNS name will be the same of the certificate Domain Name you defined at step 3 of **Create Azure App Service Certificate to be used by External Gateway** section.
+
+With this script you can:
 - Create a new Azure DNS Zone, if you haven't one created on azure or registered in another DNS provider
 - Display the CNAME value you should use to create the DNS record in other DNS provider, if you do not host it in Azure.
 - Add a CNAME record to the Azure DNS Zone that will map to UAG (Horizon External Load balancer) DNS Name
